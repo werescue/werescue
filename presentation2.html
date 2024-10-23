@@ -1,0 +1,137 @@
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>werescue demo</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e1e; /* Lighter version of black */
+            color: #ffffff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background: #2b2b2b;
+            padding: 20px;
+            text-align: center;
+            animation: fadeIn 1s;
+        }
+
+        h1 {
+            margin: 0;
+            animation: slideIn 0.5s;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        h2 {
+            color: #ffffff;
+            animation: fadeIn 1s;
+        }
+
+        .help-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #808080; /* Grey button */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-size: 20px;
+            transition: background 0.3s, transform 0.3s;
+            margin-top: 20px;
+            animation: bounceIn 0.5s;
+        }
+
+        .help-button:hover {
+            background: #696969; /* Darker grey on hover */
+            transform: scale(1.05);
+        }
+
+        #map {
+            height: 400px;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #2b2b2b;
+            color: white;
+            margin-top: 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes bounceIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to werescue demo</h1>
+    </header>
+    
+    <main>
+        <section id="info">
+            <h2>About Us</h2>
+            <p>We provide rescue services for those in need. Our mission is to ensure safety and support.</p>
+            <p>this is made by two ninth grade co-founders vaibhav and aadhavan</P>
+        </section>
+
+        <a href="https://chat.openai.com" class="help-button" target="_blank">Click me if you need help!</a>
+        
+        <div id="map"></div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 werescue demo. All rights reserved.</p>
+    </footer>
+    
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map centered on Chennai, Tamil Nadu
+        const map = L.map('map').setView([13.0827, 80.2707], 12); // Latitude and Longitude of Chennai
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Dark Mode Toggle
+        const toggleDarkMode = () => {
+            document.body.classList.toggle('dark-mode');
+        };
+        toggleDarkMode();  // Automatically apply dark mode
+    </script>
+</body>
+</html>
